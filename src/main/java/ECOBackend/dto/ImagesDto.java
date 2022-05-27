@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class ImagesDto extends BaseDto {
-    private String URL
+    private String URL;
 }
