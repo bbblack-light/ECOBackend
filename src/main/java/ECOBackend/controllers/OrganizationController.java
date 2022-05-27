@@ -23,6 +23,11 @@ public class OrganizationController {
         return null;
     }
 
+    @GetMapping("/{id}")
+    public OrganizationDto getById(@PathVariable("id") Long id) {
+        return null;
+    }
+
     @GetMapping("/all")
     public List<OrganizationDto> getAll() {
         return new ArrayList<OrganizationDto>();

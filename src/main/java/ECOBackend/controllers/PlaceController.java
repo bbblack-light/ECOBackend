@@ -24,6 +24,11 @@ public class PlaceController {
         return null;
     }
 
+    @GetMapping("/{id}")
+    public PlaceDto getById(@PathVariable("id") Long id) {
+        return null;
+    }
+
     @GetMapping("/all")
     public List<PlaceDto> getAll() {
         return new ArrayList<PlaceDto>();
