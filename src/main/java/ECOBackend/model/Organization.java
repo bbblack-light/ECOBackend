@@ -17,9 +17,8 @@ public class Organization extends BaseEntity {
     private String vkURL;
     private String instURL;
     private String tgURL;
-    @OneToOne
-    @JoinColumn(name = "organizator_id")
-    private User user;
+    @OneToMany(mappedBy = "organization")
+    private List<User> users;
 
     @OneToMany(mappedBy = "author")
     private List<Place> places;

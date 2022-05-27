@@ -19,7 +19,8 @@ public class User {
     private String patronymic;
     private String email;
     private String phoneNumber;
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @ManyToOne
+    @JoinColumn(name = "organization_id")
     private Organization organization;
     @Enumerated(EnumType.STRING)
     private Role role;

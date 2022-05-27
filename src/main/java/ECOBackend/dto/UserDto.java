@@ -13,5 +13,5 @@ public class UserDto {
     private String email;
     private Role role;
     private String phoneNumber;
-    private OrganizationDto organization;
+    private Long organizationId;
 }

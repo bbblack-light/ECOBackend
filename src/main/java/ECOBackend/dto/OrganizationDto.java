@@ -1,6 +1,5 @@
 package ECOBackend.dto;
 
-import ECOBackend.model.Place;
 import lombok.Data;
 
 import java.util.List;
@@ -14,6 +13,6 @@ public class OrganizationDto extends BaseDto {
     private String vkURL;
     private String instURL;
     private String tgURL;
-    private String userId;
+    private List<UserDto> users;
     private List<PlaceDto> places;
 }
