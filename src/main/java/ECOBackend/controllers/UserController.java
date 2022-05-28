@@ -2,11 +2,11 @@ package ECOBackend.controllers;
 
 import ECOBackend.controllers.utils.response.OperationResponse;
 import ECOBackend.dto.UserDto;
+import ECOBackend.dto.UserWithOrganizationDto;
 import ECOBackend.model.user.User;
 import ECOBackend.services.UserService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,6 +49,11 @@ public class UserController {
     @GetMapping("/info/{userId}")
     public UserDto getUserInfo(@PathVariable("userId") String userId) {
         return userService.getUserInformation(userId);
+    }
+
+    @GetMapping("/infoWithOrganization/{userId}")
+    public UserWithOrganizationDto getUserInfoWithOrganization(@PathVariable("userId") String userId) {
+        return userService.getUserInformationWithOrganization(userId);
     }
 
     @DeleteMapping("/{userId}")

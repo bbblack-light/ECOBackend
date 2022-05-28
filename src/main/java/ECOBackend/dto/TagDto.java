@@ -1,8 +1,11 @@
 package ECOBackend.dto;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class TagDto extends BaseDto {
     private String name;
 }

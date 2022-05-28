@@ -1,8 +1,11 @@
 package ECOBackend.dto;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ImagesDto extends BaseDto {
     private String URL;
 }

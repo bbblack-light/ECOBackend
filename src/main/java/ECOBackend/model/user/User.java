@@ -4,12 +4,16 @@ import ECOBackend.model.Favorite;
 import ECOBackend.model.Organization;
 import ECOBackend.model.TagsPlace;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "m_User")
-@Data
+@Getter
+@Setter
 public class User {
     @Id
     private String userId;

@@ -3,13 +3,14 @@ package ECOBackend.services;
 import ECOBackend.controllers.utils.exception.NotFoundException;
 import ECOBackend.controllers.utils.response.OperationResponse;
 import ECOBackend.dto.UserDto;
+import ECOBackend.dto.UserWithOrganizationDto;
 import ECOBackend.model.user.Role;
 import ECOBackend.model.user.User;
+import ECOBackend.repo.OrganizationRepo;
 import ECOBackend.repo.UserRepo;
 import com.google.common.base.Strings;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,13 +25,14 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepo userRepo;
-//    private final OrganizationService organizationService;
+    private final OrganizationRepo organizationRepo;
 
     private final ModelMapper modelMapper;
 
     @Autowired
-    public UserService(UserRepo userRepo, ModelMapper modelMapper) {
+    public UserService(UserRepo userRepo, OrganizationRepo organizationRepo, ModelMapper modelMapper) {
         this.userRepo = userRepo;
+        this.organizationRepo = organizationRepo;
         this.modelMapper = modelMapper;
     }
 
@@ -56,6 +58,30 @@ public class UserService {
                     Role.USER);
         }
         return modelMapper.map(user, UserDto.class);
+    }
+
+    @Transactional
+    public UserWithOrganizationDto getUserInformationWithOrganization(String userIdParam) {
+        String loggedInUserId = getLoggedInUserId();
+        User user;
+        if (Strings.isNullOrEmpty(userIdParam)) {
+            user = getLoggedInUser();
+        } else if (loggedInUserId.equals(userIdParam)) {
+            user = getLoggedInUser();
+        } else {
+            user = getUserInfoByUserId(userIdParam);
+        }
+        if (user == null) {
+            user =  new User(
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    Role.USER);
+        }
+        return modelMapper.map(user, UserWithOrganizationDto.class);
     }
 
     public String getLoggedInUserId() {
@@ -107,7 +133,8 @@ public class UserService {
         buffUser.setPatronymic(user.getPatronymic());
         buffUser.setPhoneNumber(user.getPhoneNumber());
         buffUser.setRole(user.getRole());
-        //organization logic
+        organizationRepo.findById(user.getOrganizationId())
+                .ifPresent(buffUser::setOrganization);
         return modelMapper.map(this.insertOrSaveUser(buffUser), UserDto.class);
     }
 
