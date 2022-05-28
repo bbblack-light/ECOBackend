@@ -8,7 +8,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public class SessionResponse extends OperationResponse {
     public SessionItem getItem() {
         return item;

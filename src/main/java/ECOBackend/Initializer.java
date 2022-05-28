@@ -20,7 +20,6 @@ public class Initializer {
         user.setUserId("admin");
         user.setRole(Role.ADMIN);
         user.setFirstName("Админ");
-        user.setLastName("");
         service.insertOrSaveUser(user);
     }
 
@@ -30,7 +29,6 @@ public class Initializer {
         user.setUserId("parent1");
         user.setRole(Role.USER);
         user.setFirstName("Евгений");
-        user.setLastName("Королев");
         service.insertOrSaveUser(user);
 
     }

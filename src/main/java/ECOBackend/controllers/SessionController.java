@@ -42,7 +42,6 @@ public class SessionController {
             sessionItem.setToken("xxx.xxx.xxx");
             sessionItem.setUserId(user.getUserId());
             sessionItem.setFirstName(user.getFirstName());
-            sessionItem.setLastName(user.getLastName());
             sessionItem.setEmail(user.getEmail());
             //sessionItem.setRole(user.getRole());
             return sessionItem;

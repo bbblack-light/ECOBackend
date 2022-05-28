@@ -53,8 +53,6 @@ public class UserService {
                     "",
                     "",
                     "",
-                    "",
-                    "",
                     Role.USER);
         }
         return modelMapper.map(user, UserDto.class);
@@ -73,8 +71,6 @@ public class UserService {
         }
         if (user == null) {
             user =  new User(
-                    "",
-                    "",
                     "",
                     "",
                     "",
