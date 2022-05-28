@@ -129,8 +129,6 @@ public class UserService {
         }
         buffUser.setEmail(user.getEmail());
         buffUser.setFirstName(user.getFirstName());
-        buffUser.setLastName(user.getLastName());
-        buffUser.setPatronymic(user.getPatronymic());
         buffUser.setPhoneNumber(user.getPhoneNumber());
         buffUser.setRole(user.getRole());
         organizationRepo.findById(user.getOrganizationId())

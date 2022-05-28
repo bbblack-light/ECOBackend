@@ -19,8 +19,6 @@ public class User {
     private String userId;
     private String password = "";
     private String firstName;
-    private String lastName;
-    private String patronymic;
     private String email;
     private String phoneNumber;
     @ManyToOne
@@ -36,8 +34,6 @@ public class User {
                 "new",
                 "new",
                 "new",
-                "new",
-                "new",
                 "",
                 Role.USER);
     }
@@ -45,21 +41,17 @@ public class User {
     public User(String userId,
                 String password,
                 String firstName,
-                String lastName,
-                String patronymic,
                 String email,
                 Role role) {
         this.userId = userId;
         this.password = password;
         this.firstName = firstName;
-        this.lastName = lastName;
-        this.patronymic = patronymic;
         this.email = email;
         this.role = role;
     }
 
     public String getFullName() {
-        return this.firstName + this.lastName + this.patronymic;
+        return this.firstName;
     }
 }
 

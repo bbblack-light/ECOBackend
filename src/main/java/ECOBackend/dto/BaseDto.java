@@ -1,8 +1,6 @@
 package ECOBackend.dto;
 
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 public class BaseDto {
     private Long id;
 
