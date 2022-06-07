@@ -53,6 +53,11 @@ public class PublicationService {
         else {
             if (!publicationRepo.existsById(dto.getId())) throw new NotFoundException("Публикация не существует");
             fromrepo = publicationRepo.getById(dto.getId());
+            fromrepo.setType(dto.getType());
+            fromrepo.setEventDate(dto.getEventDate());
+            fromrepo.setPublicationDate(dto.getPublicationDate());
+            fromrepo.setName(dto.getName());
+            fromrepo.setText(dto.getText());
         }
 
         Optional<Organization> optionalOrganization = organizationRepo.findById(dto.getAuthor().getId());
