@@ -1,5 +1,6 @@
 package ECOBackend.model.user;
 
+import ECOBackend.model.Entry;
 import ECOBackend.model.Favorite;
 import ECOBackend.model.Organization;
 import ECOBackend.model.TagsPlace;
@@ -28,6 +29,8 @@ public class User {
     private Role role;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Favorite> favorites;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Entry> entries;
 
     public User() {
         new User(

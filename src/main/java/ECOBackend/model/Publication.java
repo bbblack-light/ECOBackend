@@ -29,6 +29,8 @@ public class Publication extends BaseEntity{
     private List<Images> images;
     @OneToMany(mappedBy = "publication", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Favorite> favorites;
+    @OneToMany(mappedBy = "publication", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Entry> entries;
     private String name;
     private LocalDate publicationDate;
     private LocalDate eventDate;
