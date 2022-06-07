@@ -34,5 +34,7 @@ public class Publication extends BaseEntity{
     private String name;
     private LocalDate publicationDate;
     private LocalDate eventDate;
+//    @Column(name="text", length = 2048)
+    @Lob
     private String text;
 }

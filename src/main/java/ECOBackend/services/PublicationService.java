@@ -70,13 +70,9 @@ public class PublicationService {
 
         if (dto.getPublicationType()!=null) {
             Optional<PublicationType> publicationType = publicationTypeRepo.findById(dto.getPublicationType().getId());
-            if(!publicationType.isPresent()) throw new NotFoundException("Место не сущетсвует");
+            if(!publicationType.isPresent()) throw new NotFoundException("Тип публикации не сущетсвует");
             fromrepo.setType(publicationType.get());
         }
-
-        Optional<Place> placeOptional = placeRepo.findById(dto.getPlace().getId());
-        if(!placeOptional.isPresent()) throw new NotFoundException("Место не сущетсвует");
-        fromrepo.setPlace(placeOptional.get());
 
         if (CollectionUtils.isEmpty(dto.getTags()))
             dto.setTags(new ArrayList<>());
