@@ -14,8 +14,6 @@ import java.util.List;
 @Getter
 @Setter
 public class Publication extends BaseEntity{
-    @ManyToOne
-    @JoinColumn(name = "type_id")
     private PublicationType type;
     @OneToMany(cascade = CascadeType.ALL, mappedBy="publication")
     private List<TagsPublication> tags;

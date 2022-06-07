@@ -1,6 +1,5 @@
 package ECOBackend.services;
 
-import ECOBackend.controllers.PublicationTypeController;
 import ECOBackend.controllers.utils.exception.NotFoundException;
 import ECOBackend.controllers.utils.response.OperationResponse;
 import ECOBackend.dto.ImagesDto;
@@ -23,7 +22,6 @@ import java.util.stream.Collectors;
 @Service
 public class PublicationService {
     private final PublicationRepo publicationRepo;
-    private final PublicationTypeRepo publicationTypeRepo;
     private final PublicationTagRepo publicationTagRepo;
     private final OrganizationRepo organizationRepo;
     private final TagsRepo tagsRepo;
@@ -32,9 +30,8 @@ public class PublicationService {
     private final ModelMapper modelMapper;
 
     @Autowired
-    public PublicationService(PublicationRepo publicationRepo, PublicationTypeRepo publicationTypeRepo, PublicationTagRepo publicationTagRepo, OrganizationRepo organizationRepo, TagsRepo tagsRepo, PlaceRepo placeRepo, ImagesRepo imagesRepo, ModelMapper modelMapper) {
+    public PublicationService(PublicationRepo publicationRepo, PublicationTagRepo publicationTagRepo, OrganizationRepo organizationRepo, TagsRepo tagsRepo, PlaceRepo placeRepo, ImagesRepo imagesRepo, ModelMapper modelMapper) {
         this.publicationRepo = publicationRepo;
-        this.publicationTypeRepo = publicationTypeRepo;
         this.publicationTagRepo = publicationTagRepo;
         this.organizationRepo = organizationRepo;
         this.tagsRepo = tagsRepo;
@@ -66,12 +63,6 @@ public class PublicationService {
             Optional<Place> placeOptional = placeRepo.findById(dto.getPlace().getId());
             if(!placeOptional.isPresent()) throw new NotFoundException("Место не сущетсвует");
             fromrepo.setPlace(placeOptional.get());
-        }
-
-        if (dto.getPublicationType()!=null) {
-            Optional<PublicationType> publicationType = publicationTypeRepo.findById(dto.getPublicationType().getId());
-            if(!publicationType.isPresent()) throw new NotFoundException("Тип публикации не сущетсвует");
-            fromrepo.setType(publicationType.get());
         }
 
         if (CollectionUtils.isEmpty(dto.getTags()))

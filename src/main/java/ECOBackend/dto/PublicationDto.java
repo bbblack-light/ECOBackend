@@ -1,12 +1,14 @@
 package ECOBackend.dto;
 
+import ECOBackend.model.PublicationType;
+
 import java.time.LocalDate;
 import java.util.List;
 
 public class PublicationDto extends BaseDto{
     private List<TagDto> tags;
     private List<ImagesDto> images;
-    private PublicationTypeDto publicationType;
+    private PublicationType publicationType;
     private OrganizationWithoutUsersDto author;
     private Long countInFavorites;
     private PlaceDto place;
@@ -29,14 +31,6 @@ public class PublicationDto extends BaseDto{
 
     public void setImages(List<ImagesDto> images) {
         this.images = images;
-    }
-
-    public PublicationTypeDto getPublicationType() {
-        return publicationType;
-    }
-
-    public void setPublicationType(PublicationTypeDto publicationType) {
-        this.publicationType = publicationType;
     }
 
     public OrganizationWithoutUsersDto getAuthor() {
@@ -93,5 +87,13 @@ public class PublicationDto extends BaseDto{
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public PublicationType getPublicationType() {
+        return publicationType;
+    }
+
+    public void setPublicationType(PublicationType publicationType) {
+        this.publicationType = publicationType;
     }
 }
