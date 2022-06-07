@@ -8,7 +8,7 @@ import java.util.List;
 public class PublicationDto extends BaseDto{
     private List<TagDto> tags;
     private List<ImagesDto> images;
-    private PublicationType publicationType;
+    private PublicationType type;
     private OrganizationWithoutUsersDto author;
     private Long countInFavorites;
     private PlaceDto place;
@@ -89,11 +89,11 @@ public class PublicationDto extends BaseDto{
         this.text = text;
     }
 
-    public PublicationType getPublicationType() {
-        return publicationType;
+    public PublicationType getType() {
+        return type;
     }
 
-    public void setPublicationType(PublicationType publicationType) {
-        this.publicationType = publicationType;
+    public void setType(PublicationType type) {
+        this.type = type;
     }
 }
