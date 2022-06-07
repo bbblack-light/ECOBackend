@@ -127,8 +127,10 @@ public class UserService {
         buffUser.setFirstName(user.getFirstName());
         buffUser.setPhoneNumber(user.getPhoneNumber());
         buffUser.setRole(user.getRole());
-        organizationRepo.findById(user.getOrganizationId())
+        if (user.getOrganizationId()!=null)
+            organizationRepo.findById(user.getOrganizationId())
                 .ifPresent(buffUser::setOrganization);
+        else buffUser.setOrganization(null);
         return modelMapper.map(this.insertOrSaveUser(buffUser), UserDto.class);
     }
 

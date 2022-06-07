@@ -20,7 +20,7 @@ public class FavoriteController {
         this.favoriteService = favoriteService;
     }
 
-    @GetMapping("{userId}/{publicationId}")
+    @GetMapping("/{userId}/{publicationId}")
     public OperationResponse update(@PathVariable("userId") String userId, @PathVariable("publicationId") Long publicationId) {
         return favoriteService.update(userId, publicationId);
     }
