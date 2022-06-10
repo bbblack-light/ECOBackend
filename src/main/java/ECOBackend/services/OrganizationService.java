@@ -45,6 +45,13 @@ public class OrganizationService {
         else {
             if (!organizationRepo.existsById(dto.getId())) throw new NotFoundException("Класс не существует");
             fromrepo = organizationRepo.getById(dto.getId());
+            fromrepo.setName(dto.getName());
+            fromrepo.setAddress(dto.getAddress());
+            fromrepo.setPhoneNumber(dto.getPhoneNumber());
+            fromrepo.setDescription(dto.getDescription());
+            fromrepo.setInstURL(dto.getInstURL());
+            fromrepo.setTgURL(dto.getTgURL());
+            fromrepo.setVkURL(dto.getVkURL());
         }
 
 
