@@ -65,6 +65,7 @@ public class EntryService {
         return new OperationResponse("ok");
     }
 
+    @Transactional
     public List<EntryDto> getAllByUser(String userId) {
         User u;
         if (userRepo.existsByUserId(userId)) {
@@ -76,6 +77,7 @@ public class EntryService {
         throw new NotFoundException("Пользователь не найден");
     }
 
+    @Transactional
     public List<EntryDto> getAllByPublication(Long publicationId) {
         Publication p;
         if (publicationRepo.existsById(publicationId)) {
