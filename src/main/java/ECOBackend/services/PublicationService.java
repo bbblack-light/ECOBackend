@@ -103,6 +103,11 @@ public class PublicationService {
             }
         }
 
+        if (CollectionUtils.isEmpty(dto.getImages()))
+            dto.setImages(new ArrayList<>());
+        if (CollectionUtils.isEmpty(fromrepo.getImages()))
+            fromrepo.setImages(new ArrayList<>());
+
         //images processing
         List<Images> removeUserFromOrganization = new ArrayList<>();
         for (Images images : fromrepo.getImages()) {
