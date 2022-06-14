@@ -33,8 +33,10 @@ public class EntryService {
     @Transactional
     public EntryDto update(EntryDto dto) {
         Entry entry = new Entry();
+
         if (dto.getId()!=null && entryRepo.existsById(dto.getId())) entry.setId(dto.getId());
-        else if (!entryRepo.existsById(dto.getId())) throw new NotFoundException("Заявка не найдена");
+        else if (dto.getId()!=null && !entryRepo.existsById(dto.getId())) throw new NotFoundException("Заявка не найдена");
+
         if (dto.getUser()!=null && dto.getUser().getUserId()!=null &&
                 userRepo.existsByUserId(dto.getUser().getUserId())) {
             entry.setUser(userRepo.findOneByUserId(dto.getUser().getUserId()).get());
