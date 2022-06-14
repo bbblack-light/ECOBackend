@@ -45,7 +45,10 @@ public class ModelMapperConfiguration {
                 if(c.getSource() == null) return null;
                 return c.getSource().getId();
             };
+
+            Converter<String, String> password  = c -> "";
             mapper.using(organization).map(User::getOrganization, UserDto::setOrganizationId);
+            mapper.using(password).map(User::getPassword, UserDto::setPassword);
         });
     }
 
